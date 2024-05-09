@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 import time
@@ -34,5 +34,12 @@ while game_is_on:
     if ball.distance(right_paddle) < 50 and ball.xcor() > 320 or ball.distance(left_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
 
+    # Detect right paddle miss
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+    # Detect left paddle miss
+    if ball.xcor() < -380:
+        ball.reset_position()
 
 screen.exitonclick()
